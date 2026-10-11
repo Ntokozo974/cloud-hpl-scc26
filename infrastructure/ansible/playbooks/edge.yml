@@ -1,0 +1,33 @@
+---
+- name: Configure Edge Services
+  hosts: edge
+  become: yes
+  tasks:
+    # --- FIREWALL (nftables) ---
+    - name: Install nftables
+      dnf:
+        name: nftables
+        state: present
+      tags: firewall
+
+    - name: Enable and start nftables
+      service:
+        name: nftables
+        state: started
+        enabled: yes
+      tags: firewall
+
+    # --- VPN (WireGuard) ---
+    - name: Install WireGuard tools
+      dnf:
+        name: wireguard-tools
+        state: present
+      tags: wireguard
+
+    # --- DNS (Pi-hole) ---
+    - name: Download Pi-hole installer
+      get_url:
+        url: https://install.pi-hole.net
+        dest: /root/pihole-install.sh
+        mode: '0755'
+      tags: pihole
