@@ -49,7 +49,7 @@ resource "openstack_compute_instance_v2" "edge_01" {
   name            = "edge-01"
   image_id        = var.image_id
   flavor_id       = var.flavor_medium
-  security_groups = ["default"]
+  security_groups = ["default", openstack_networking_secgroup_v2.edge_secgroup.name]
   key_pair        = openstack_compute_keypair_v2.scc_key.name
 
   # Tell Terraform to wait for the subnet to exist before booting
@@ -125,4 +125,19 @@ data "openstack_networking_port_v2" "edge_port" {
 resource "openstack_networking_floatingip_associate_v2" "edge_fip_assoc" {
   floating_ip = openstack_networking_floatingip_v2.edge_fip.address
   port_id     = data.openstack_networking_port_v2.edge_port.id
+}
+
+resource "openstack_networking_secgroup_v2" "edge_secgroup" {
+  name        = "edge-ssh-access"
+  description = "Allow inbound SSH traffic"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "allow_ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.edge_secgroup.id
 }
