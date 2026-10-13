@@ -7,4 +7,4 @@ clouds.yaml
 *.pem
 *.key
 *.crt.private
-secrets-private/
+secrets-private/infrastructure/ansible/inventories/private/hosts.yml
