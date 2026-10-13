@@ -8,3 +8,4 @@ clouds.yaml
 *.key
 *.crt.private
 secrets-private/infrastructure/ansible/inventories/private/hosts.yml
+infrastructure/ansible/inventories/private/hosts.yml
