@@ -9,5 +9,5 @@ terraform {
 }
 
 provider "openstack" {
-  cloud = "openstack"
+  # Leave empty to dynamically use the openrc.sh environment variables
 }
