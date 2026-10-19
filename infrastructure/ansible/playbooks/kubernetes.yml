@@ -11,7 +11,7 @@
     - name: Initialize Kubernetes cluster
       command: >
         kubeadm init
-        --control-plane-endpoint="10.83.0.225"
+        --control-plane-endpoint="10.83.0.225:6443"
         --apiserver-advertise-address="10.83.0.68"
         --pod-network-cidr="10.244.0.0/16"
         --service-cidr="10.96.0.0/12"
