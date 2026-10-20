@@ -26,7 +26,7 @@
               bind *:6443
               default_backend k8s_control_plane
           backend k8s_control_plane
-              server k8s-cp-01 10.83.0.100:6443 check
+              server k8s-cp-01 10.83.0.68:6443 check
       notify: restart haproxy
 
     - name: Allow HAProxy to connect to any port (SELinux)
