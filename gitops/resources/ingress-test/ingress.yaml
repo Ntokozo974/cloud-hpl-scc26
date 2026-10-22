@@ -5,8 +5,13 @@ metadata:
   namespace: default
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - ingress-test.local
+      secretName: ingress-test-tls
   rules:
-    - http:
+    - host: ingress-test.local
+      http:
         paths:
           - path: /
             pathType: Prefix
