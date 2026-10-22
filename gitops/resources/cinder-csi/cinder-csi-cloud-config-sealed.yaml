@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: cloud-config
+  namespace: kube-system
+spec:
+  encryptedData:
+    cloud.conf: AgABL9wAO/lPuBreJIOvfz54OgSAhEW2RN00F48K5EH4H5fRz35e1L5f0Z0Oe1h6GHtUpW73KJj0GnLhmXcbNAx9ZNlyY4VLJhK9bysVw/2PpuHex66o33vOSY5GNZtdRG1Uj96uCAPt2WX/XXO87FfQK2i99qP7NsXLq+ZmVYUqRzg9GILLKwsE2V+i8EfCUhBYdpoe/O95nxDTs9T6W62SZsiEM2nUwSKR9+uEOS8zcfg7pnVNVP2ZuMzKegVcm/a6Rv7UtlZ1gPDAi55UkAdYpFUQWAYH77CMZi3+b2bOB0ajmphjd9bJKo3PHiA4Q9YSuLbWAU6msLcf/dANXyp/HvsiEASP+qrHOFt9jx9H7ekLfNlQiBaXChPfAhsze6HKg11FNLHRyFcSyCObz4B0HxfnPHQtY/SPuGtXmYLuBOnoEDZP9BCuNIN/AJG4X5fhfCFrxjPq302ogPyuBVLlteuLbIYbJutJi4JhQyPb6jd0C19IB5thlJ9rsuaHVhRpGM3zcVQuK5GMQnJU49dQaJE+HoINiFckkspM32R8wYBgqI/YGhnm5EZ/Jr+z/VJs0MOZZsfsJqYaUfUXwcfSRqpiqkou39rAM/JYI6JKBxPEMEc7Uh97DDESiTEFoClg8n4g4OfWiRnagoIFbyWWJEXgU/ip5TFWud66xG4IqPrgtc5aiiLlCh+p+yeevlFEBtEeXWlpNFWNrCmJ8XzQEioiPn4ZOFdfneLmXjAmzSHAG45KFU0gCxNuKlogLYZmhX/cGqwbqZaupkzay4v35/J/Y9dWOXRbqtTvVsyDziHKUoB7/yIV8OEoyiCJYldyuBZ1gf62PZMmp7G/QcIRksDIQ7Ehg5juvU2Pdb5dulFniEzbqcQCDqaC/icCm7ZfVg9revF1NMaRgmRce5LRNb6qApJ+qaS661CbII/oAmnB24R0tqf9kF+Pkzw+dmVw56eaNfyt9KyzmJlDyjvdGpkxG8tbZqHmFkQf4jn/53rnBQAUTH1kTDewB/Tx446xp61sOT8mV2hdmHtmUNGfnn4BMWLSeGrs9qqKNnh7w3YHDhTd/j1yj8oLUB+Y9/Ii08VC0E5htSzewRzguso/aKv1yoWlqJXRPDn9ilcY6fcH
+  template:
+    metadata:
+      name: cloud-config
+      namespace: kube-system
+    type: Opaque
