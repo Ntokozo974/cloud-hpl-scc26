@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - traefik.yaml
   - cert-manager.yaml
+  - cert-manager-config.yaml
   - cinder-csi.yaml
   - cinder-csi-config.yaml
