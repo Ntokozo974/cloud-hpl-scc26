@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/gitops/resources/cinder-csi/values.yaml
     - repoURL: https://github.com/chpc-tech-eval/cloud-hpl-scc26.git
-      targetRevision: feature/week2-kubernetes
+      targetRevision: dev
       ref: values
   destination:
     server: https://kubernetes.default.svc
