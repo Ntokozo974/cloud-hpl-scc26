@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Ntokozo974/cloud-hpl-scc26.git
-    targetRevision: feature/week2-kubernetes
+    repoURL: https://github.com/chpc-tech-eval/cloud-hpl-scc26.git
+    targetRevision: dev
     path: gitops/resources/ingress-test
   destination:
     server: https://kubernetes.default.svc
