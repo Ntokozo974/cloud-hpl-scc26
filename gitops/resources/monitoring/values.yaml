@@ -1,4 +1,3 @@
-
 prometheus:
   prometheusSpec:
     retention: 7d
@@ -27,6 +26,7 @@ grafana:
       memory: 256Mi
     limits:
       memory: 1Gi
+
   persistence:
     enabled: true
     type: pvc
@@ -34,10 +34,98 @@ grafana:
     accessModes:
       - ReadWriteOnce
     size: 5Gi
+
   admin:
     existingSecret: grafana-admin
     userKey: admin-user
     passwordKey: admin-password
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      searchNamespace: ALL
+
+  dashboards:
+    default:
+      cluster-overview:
+        json: |
+          {
+            "title": "Cluster Overview",
+            "uid": "cluster-overview",
+            "schemaVersion": 39,
+            "version": 1,
+            "refresh": "30s",
+            "panels": [
+              {
+                "id": 1,
+                "title": "Healthy Targets",
+                "type": "stat",
+                "gridPos": {
+                  "h": 5,
+                  "w": 6,
+                  "x": 0,
+                  "y": 0
+                },
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "prometheus"
+                },
+                "targets": [
+                  {
+                    "expr": "sum(up)",
+                    "legendFormat": "Up",
+                    "refId": "A"
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "title": "CPU Usage by Node (%)",
+                "type": "timeseries",
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 6,
+                  "y": 0
+                },
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "prometheus"
+                },
+                "targets": [
+                  {
+                    "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])))",
+                    "legendFormat": "{{instance}}",
+                    "refId": "A"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "title": "Memory Usage by Node (%)",
+                "type": "timeseries",
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 8
+                },
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "prometheus"
+                },
+                "targets": [
+                  {
+                    "expr": "100 * (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)",
+                    "legendFormat": "{{instance}}",
+                    "refId": "A"
+                  }
+                ]
+              }
+            ]
+          }
 
 alertmanager:
   enabled: false
