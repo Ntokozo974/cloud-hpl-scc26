@@ -7,3 +7,5 @@ resources:
   - ingress-test.yaml
   - cinder-csi.yaml
   - cinder-csi-config.yaml
+  - monitoring.yaml
+  - monitoring-secrets.yaml
