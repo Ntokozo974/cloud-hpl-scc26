@@ -20,6 +20,7 @@ prometheus:
 
 grafana:
   replicas: 1
+
   resources:
     requests:
       cpu: 100m
@@ -43,8 +44,8 @@ grafana:
   sidecar:
     dashboards:
       enabled: true
-      label: grafana_dashboard
-      labelValue: "1"
+      label: dashboard-provider
+      labelValue: default
       searchNamespace: ALL
 
   dashboards:
