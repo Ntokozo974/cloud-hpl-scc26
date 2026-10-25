@@ -9,3 +9,4 @@ resources:
   - cinder-csi-config.yaml
   - monitoring.yaml
   - monitoring-secrets.yaml
+  - wazuh-secrets.yaml
