@@ -12,14 +12,18 @@ spec:
       targetRevision: 92.13.1
       helm:
         releaseName: monitoring
+        skipCrds: true
         valueFiles:
           - $values/gitops/resources/monitoring/values.yaml
+
     - repoURL: https://github.com/Ntokozo974/cloud-hpl-scc26.git
       targetRevision: feature/week3-observability
       ref: values
+
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
+
   syncPolicy:
     automated:
       prune: true
