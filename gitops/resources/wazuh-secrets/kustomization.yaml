@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - wazuh-api-ca-sealed.yaml
   - indexer-certs-sealed.yaml
+  - dashboard-credentials-sealed.yaml

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wazuh-dashboard
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Ntokozo974/cloud-hpl-scc26.git
+    targetRevision: feature/week3-observability
+    path: gitops/resources/wazuh-dashboard
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: wazuh
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
