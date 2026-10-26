@@ -22,7 +22,7 @@ spec:
           env:
             - name: INDEXER_USERNAME
               value: kibanaserver
-            - name: INDEXER_PASSWORD
+            - name: DASHBOARD_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: dashboard-credentials
