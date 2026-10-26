@@ -43,7 +43,7 @@ spec:
               mountPath: /usr/share/wazuh-dashboard/certs
               readOnly: true
             - name: indexer-certs
-              mountPath: /usr/share/wazuh-dashboard/certs/root-ca.pem
+              mountPath: /usr/share/wazuh-dashboard/indexer-certs/root-ca.pem
               subPath: root-ca.pem
               readOnly: true
       volumes:
