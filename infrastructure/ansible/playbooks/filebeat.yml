@@ -149,6 +149,13 @@
         cmd: filebeat test config -e
       changed_when: false
 
+    - name: Protect Filebeat configuration containing indexer credentials
+      ansible.builtin.file:
+        path: /etc/filebeat/filebeat.yml
+        owner: root
+        group: root
+        mode: "0600"
+
     - name: Enable and start Filebeat
       ansible.builtin.systemd:
         name: filebeat
