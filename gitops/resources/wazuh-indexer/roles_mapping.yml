@@ -85,3 +85,13 @@ manage_wazuh_index:
   users:
   - "kibanaserver"
   and_backend_roles: []
+
+# Filebeat setup uses the existing kibanaserver service account.
+filebeat_pipeline_setup:
+  reserved: false
+  hidden: false
+  backend_roles: []
+  hosts: []
+  users:
+    - "kibanaserver"
+  and_backend_roles: []
