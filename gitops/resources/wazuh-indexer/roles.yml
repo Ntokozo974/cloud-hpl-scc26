@@ -391,3 +391,12 @@ manage_wazuh_index:
     - "index"
   tenant_permissions: []
   static: false
+
+# Allow Filebeat to load and read the Wazuh ingest pipeline.
+filebeat_pipeline_setup:
+  reserved: false
+  hidden: false
+  cluster_permissions:
+    - 'cluster:admin/ingest/pipeline/get'
+    - 'cluster:admin/ingest/pipeline/put'
+  index_permissions: []
