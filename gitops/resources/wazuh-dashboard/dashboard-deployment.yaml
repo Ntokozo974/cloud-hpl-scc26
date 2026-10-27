@@ -27,6 +27,8 @@ spec:
                 secretKeyRef:
                   name: dashboard-credentials
                   key: password
+            - name: NODE_EXTRA_CA_CERTS
+              value: /usr/share/wazuh-dashboard/indexer-certs/wazuh-api-ca.pem
           resources:
             requests:
               cpu: 250m
@@ -46,6 +48,14 @@ spec:
               mountPath: /usr/share/wazuh-dashboard/indexer-certs/root-ca.pem
               subPath: root-ca.pem
               readOnly: true
+            - name: dashboard-api-config
+              mountPath: /usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml
+              subPath: wazuh.yml
+              readOnly: true
+            - name: dashboard-api-config
+              mountPath: /usr/share/wazuh-dashboard/indexer-certs/wazuh-api-ca.pem
+              subPath: wazuh-api-ca.pem
+              readOnly: true
       volumes:
         - name: dashboard-conf
           configMap:
@@ -64,3 +74,11 @@ spec:
             items:
               - key: root-ca.pem
                 path: root-ca.pem
+        - name: dashboard-api-config
+          secret:
+            secretName: dashboard-wazuh-api-config
+            items:
+              - key: wazuh.yml
+                path: wazuh.yml
+              - key: wazuh-api-ca.pem
+                path: wazuh-api-ca.pem
