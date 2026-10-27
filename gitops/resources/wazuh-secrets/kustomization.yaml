@@ -4,3 +4,4 @@ resources:
   - wazuh-api-ca-sealed.yaml
   - indexer-certs-sealed.yaml
   - dashboard-credentials-sealed.yaml
+  - dashboard-wazuh-api-config-sealed.yaml
